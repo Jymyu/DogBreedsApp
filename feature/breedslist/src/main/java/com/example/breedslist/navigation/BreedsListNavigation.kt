@@ -11,12 +11,12 @@ import com.example.model.BreedItemUiModel
 const val breedsListGraphRoutePattern = "breeds_list_graph"
 const val breedsListRoute = "breeds_list_route"
 
-fun NavController.navigateToInterestsGraph(navOptions: NavOptions? = null) {
+fun NavController.navigateToBreedsGraph(navOptions: NavOptions? = null) {
     this.navigate(breedsListGraphRoutePattern, navOptions)
 }
 
 fun NavGraphBuilder.breedsListGraph(
-    onBreedClick: (BreedItemUiModel) -> Unit,
+    onBreedClick: (Int) -> Unit,
     nestedGraphs: NavGraphBuilder.() -> Unit,
 ) {
     navigation(

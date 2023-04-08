@@ -16,7 +16,7 @@ import com.example.model.BreedItemUiModel
 @Composable
 fun BreedsListContent(
     breeds: List<BreedItemUiModel>,
-    onBreedClick: (BreedItemUiModel) -> Unit,
+    onBreedClick: (Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(
@@ -30,7 +30,7 @@ fun BreedsListContent(
                 BreedsItem(
                     name = breed.name,
                     imageUrl = breed.imageUrl,
-                    onClick = { onBreedClick(breed) },
+                    onClick = { onBreedClick(breed.id) },
                 )
             }
         }

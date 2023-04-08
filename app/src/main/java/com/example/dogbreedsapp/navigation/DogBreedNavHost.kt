@@ -6,7 +6,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.example.breedslist.navigation.breedsListGraph
 import com.example.breedslist.navigation.breedsListGraphRoutePattern
-import com.example.breedslist.navigation.breedsListRoute
+import com.example.breedslist.navigation.navigateToBreedsGraph
+import com.example.details.navigation.detailsBreedScreen
+import com.example.details.navigation.navigateToBreedDetails
 
 @Composable
 fun DogBreedsNavHost(
@@ -22,12 +24,12 @@ fun DogBreedsNavHost(
 
         breedsListGraph(
             onBreedClick = {
+                           navController.navigateToBreedDetails(it)
             },
             nestedGraphs = {
-//                topicScreen(
-//                    onBackClick = navController::popBackStack,
-//                    onTopicClick = {},
-//                )
+                detailsBreedScreen(
+                    onBackClick = navController::popBackStack,
+                )
             },
         )
     }

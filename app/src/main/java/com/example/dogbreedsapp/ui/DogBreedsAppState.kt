@@ -2,7 +2,6 @@ package com.example.dogbreedsapp.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.NavDestination
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
@@ -10,7 +9,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
 import com.example.breedslist.navigation.breedsListRoute
-import com.example.breedslist.navigation.navigateToInterestsGraph
+import com.example.breedslist.navigation.navigateToBreedsGraph
 import com.example.dogbreedsapp.navigation.TopLevelDestination
 
 
@@ -56,7 +55,7 @@ class NiaAppState(
         }
 
         when (topLevelDestination) {
-            TopLevelDestination.BREEDS_LIST -> navController.navigateToInterestsGraph(topLevelNavOptions)
+            TopLevelDestination.BREEDS_LIST -> navController.navigateToBreedsGraph(topLevelNavOptions)
 //            BOOKMARKS -> navController.navigateToBookmarks(topLevelNavOptions)
 //            INTERESTS -> navController.navigateToInterestsGraph(topLevelNavOptions)
         }

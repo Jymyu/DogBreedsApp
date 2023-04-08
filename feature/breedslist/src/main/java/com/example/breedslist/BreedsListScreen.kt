@@ -14,7 +14,7 @@ import com.example.model.BreedItemUiModel
 
 @Composable
 internal fun BreedsListRoute(
-    onBreedClick: (BreedItemUiModel) -> Unit,
+    onBreedClick: (Int) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: BreedsListViewModel = hiltViewModel(),
 ) {
@@ -30,7 +30,7 @@ internal fun BreedsListRoute(
 @Composable
 internal fun BreedsListScreen(
     uiState: BreedsListUiState,
-    onBreedClick: (BreedItemUiModel) -> Unit,
+    onBreedClick: (Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
