@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="loading">Loading data</string>
+    <string name="empty_screen">No Available Data</string>
+    <string name="nav_button_label_breeds_list">Breeds List</string>
+</resources>
