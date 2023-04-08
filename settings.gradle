@@ -16,3 +16,4 @@ rootProject.name = "DogBreedsApp"
 include ':app'
 include ':design-system'
 include ':feature:breedslist'
+include ':model'

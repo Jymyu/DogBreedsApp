@@ -2,8 +2,12 @@ package com.example.breedslist
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -13,20 +17,22 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.design_system.component.DogBreedIcons
+import com.example.design_system.component.DynamicAsyncImage
+import com.example.design_system.theme.DogBreedsAppTheme
+import com.example.design_system.theme.Shapes
 
 @Composable
 fun BreedsItem(
-    name: Int,
-    following: Int,
-    topicImageUrl: Int,
+    name: String,
+    imageUrl: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     iconModifier: Modifier = Modifier,
-    description: Int = 0,
     itemSeparation: Dp = 16.dp,
 ) {
     Row(
@@ -40,15 +46,16 @@ fun BreedsItem(
                 .clickable { onClick() }
                 .padding(vertical = itemSeparation),
         ) {
-            BreedImage(topicImageUrl.toString(), iconModifier.size(64.dp))
+            BreedImage(imageUrl, iconModifier.size(256.dp))
             Spacer(modifier = Modifier.width(16.dp))
-            Text(name.toString())
+            Text(name, style = MaterialTheme.typography.titleMedium)
         }
     }
 }
 
 @Composable
-private fun BreedImage(topicImageUrl: String, modifier: Modifier = Modifier) {
+private fun BreedImage(imageUrl: String, modifier: Modifier = Modifier) {
+    if (imageUrl.isEmpty()){
         Icon(
             modifier = modifier
                 .background(MaterialTheme.colorScheme.surface)
@@ -56,5 +63,15 @@ private fun BreedImage(topicImageUrl: String, modifier: Modifier = Modifier) {
             imageVector = DogBreedIcons.Person,
             contentDescription = null, // decorative image
         )
+
+    } else {
+        DynamicAsyncImage(
+            imageUrl = imageUrl,
+            contentDescription = null,
+            modifier = modifier,
+        )
+
+    }
+
 
 }

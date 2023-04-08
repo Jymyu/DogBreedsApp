@@ -11,27 +11,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
+import com.example.model.BreedItemUiModel
 
 @Composable
 fun BreedsListContent(
-    breeds: List<Int>,
-    onBreedClick: (Int) -> Unit,
+    breeds: List<BreedItemUiModel>,
+    onBreedClick: (BreedItemUiModel) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(
         modifier = modifier
-            .padding(horizontal = 16.dp)
-            .testTag("interests:topics"),
+            .padding(horizontal = 16.dp),
         contentPadding = PaddingValues(top = 8.dp),
     ) {
         breeds.forEach { breed ->
-            val topicId = breed
-            item(key = topicId) {
+            val breedId = breed.id
+            item(key = breedId) {
                 BreedsItem(
-                    name = breed,
-                    following = breed,
-                    description = breed,
-                    topicImageUrl = breed,
+                    name = breed.name,
+                    imageUrl = breed.imageUrl,
                     onClick = { onBreedClick(breed) },
                 )
             }

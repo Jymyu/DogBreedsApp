@@ -18,6 +18,7 @@ package com.example.breedslist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.model.BreedItemUiModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -43,9 +44,18 @@ class BreedsListViewModel @Inject constructor(
         )
 }
 
- fun getMockedBreeds(): Flow<List<Int>> = flow {
+ fun getMockedBreeds(): Flow<List<BreedItemUiModel>> = flow {
      delay(1000)
     emit(
-        listOf(1,2,3,4,5,6,7,8,9,)
+        listOf(
+            BreedItemUiModel("group",0,"https://25.media.tumblr.com/tumblr_m1yuqjfdy31qejbiro1_500.jpg","Dog","Origin","temperament","category"),
+            BreedItemUiModel("group",1,"https://25.media.tumblr.com/tumblr_m1yuqjfdy31qejbiro1_500.jpg","Dog","Origin","temperament","category"),
+            BreedItemUiModel("group",2,"https://25.media.tumblr.com/tumblr_m1yuqjfdy31qejbiro1_500.jpg","Dog","Origin","temperament","category"),
+            BreedItemUiModel("group",3,"https://25.media.tumblr.com/tumblr_m1yuqjfdy31qejbiro1_500.jpg","Dog","Origin","temperament","category"),
+            BreedItemUiModel("group",4,"https://25.media.tumblr.com/tumblr_m1yuqjfdy31qejbiro1_500.jpg","Dog","Origin","temperament","category"),
+            BreedItemUiModel("group",5,"https://25.media.tumblr.com/tumblr_m1yuqjfdy31qejbiro1_500.jpg","Dog","Origin","temperament","category"),
+            BreedItemUiModel("group",6,"https://25.media.tumblr.com/tumblr_m1yuqjfdy31qejbiro1_500.jpg","Dog","Origin","temperament","category"),
+
+            )
     )
 }

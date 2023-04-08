@@ -10,10 +10,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.design_system.component.BreedsLoadingWheel
+import com.example.model.BreedItemUiModel
 
 @Composable
 internal fun BreedsListRoute(
-    onBreedClick: (Int) -> Unit,
+    onBreedClick: (BreedItemUiModel) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: BreedsListViewModel = hiltViewModel(),
 ) {
@@ -29,7 +30,7 @@ internal fun BreedsListRoute(
 @Composable
 internal fun BreedsListScreen(
     uiState: BreedsListUiState,
-    onBreedClick: (Int) -> Unit,
+    onBreedClick: (BreedItemUiModel) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
