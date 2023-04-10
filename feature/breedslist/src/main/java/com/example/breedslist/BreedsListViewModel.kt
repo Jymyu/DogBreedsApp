@@ -35,6 +35,8 @@ class BreedsListViewModel @Inject constructor(
 
     private var page = 1
     private var loading = false
+    private var isSortedAlphabetically = false
+    private var isToShowOnGrid = false
 
     private val _uiState = MutableStateFlow<BreedsListUiState>(BreedsListUiState.Loading)
     val uiState: StateFlow<BreedsListUiState> = _uiState.asStateFlow()
@@ -71,9 +73,29 @@ class BreedsListViewModel @Inject constructor(
     }
 
     private fun handleFetchBreedsSuccess(it: List<BreedItemUiModel>) {
-        breeds = (breeds + it).toMutableList()
-        _uiState.value = BreedsListUiState.Breeds(breeds)
+        breeds.addAll(it)
+//        breeds = (breeds + it).toMutableList()
+        _uiState.value = BreedsListUiState.Breeds(breeds,isToShowOnGrid)
         page++
+    }
+
+    fun onAlphaClick() {
+        val sorted  = breeds.sortedBy { it.name }
+        if(!isSortedAlphabetically){
+
+            _uiState.value = BreedsListUiState.Breeds(sorted, isToShowOnGrid)
+            isSortedAlphabetically = true
+        } else{
+            _uiState.value = BreedsListUiState.Breeds(sorted.reversed(),isToShowOnGrid)
+            isSortedAlphabetically = false
+        }
+
+    }
+
+    fun onGridClick(){
+        isToShowOnGrid = !isToShowOnGrid
+        _uiState.value = BreedsListUiState.Breeds(breeds,isToShowOnGrid)
+
     }
 
 

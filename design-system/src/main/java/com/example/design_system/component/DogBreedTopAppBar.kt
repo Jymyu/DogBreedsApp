@@ -15,19 +15,39 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.design_system.icons.DogBreedIcons
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DogBreedsTopAppBar(
     @StringRes titleRes: Int,
     modifier: Modifier = Modifier,
+    actionAlphaIcon: ImageVector,
+    actionGridIcon: ImageVector,
     colors: TopAppBarColors = TopAppBarDefaults.centerAlignedTopAppBarColors(),
-    onActionClick: () -> Unit = {},
+    onAlphaClick: () -> Unit = {},
+    onGridClick: () -> Unit = {}
 ) {
     CenterAlignedTopAppBar(
         title = { Text(text = stringResource(id = titleRes)) },
         colors = colors,
         modifier = modifier.testTag("niaTopAppBar"),
+        actions = {
+            IconButton(onClick = onAlphaClick) {
+                Icon(
+                    imageVector = actionAlphaIcon,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurface,
+                )
+            }
+            IconButton(onClick = onGridClick) {
+                Icon(
+                    imageVector = actionGridIcon,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurface,
+                )
+            }
+        },
     )
 }
 
@@ -37,5 +57,7 @@ fun DogBreedsTopAppBar(
 private fun NiaTopAppBarPreview() {
     DogBreedsTopAppBar(
         titleRes = android.R.string.untitled,
-    )
+        actionAlphaIcon = DogBreedIcons.Person,
+        actionGridIcon = DogBreedIcons.Person,
+        )
 }

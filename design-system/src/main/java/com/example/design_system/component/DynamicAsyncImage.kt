@@ -19,6 +19,7 @@ package com.example.design_system.component
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
 import coil.compose.AsyncImage
 
 /**
@@ -36,5 +37,6 @@ fun DynamicAsyncImage(
         model = imageUrl,
         contentDescription = contentDescription,
         modifier = modifier,
+        contentScale = ContentScale.Crop,
     )
 }

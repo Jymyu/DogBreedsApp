@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.design_system.component.BreedsLoadingWheel
 import com.example.design_system.component.DogBreedsTopAppBar
 import com.example.design_system.icons.DogBreedIcons
@@ -29,7 +30,7 @@ internal fun BreedsListRoute(
         uiState = uiState,
         onBreedClick = onBreedClick,
         modifier = modifier,
-        fetchMoreData = { viewModel.fetchBreeds() },
+        viewModel
     )
 }
 
@@ -39,20 +40,25 @@ internal fun BreedsListScreen(
     uiState: BreedsListUiState,
     onBreedClick: (BreedItemUiModel) -> Unit,
     modifier: Modifier = Modifier,
-    fetchMoreData: () -> Unit,
+    viewModel: BreedsListViewModel,
 
     ) {
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
+
         DogBreedsTopAppBar(
             titleRes = R.string.nav_button_label_breeds_list,
             colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                 containerColor = Color.Transparent,
             ),
             actionAlphaIcon = DogBreedIcons.Person,
-            actionGridIcon = DogBreedIcons.Person)
+            actionGridIcon = DogBreedIcons.Person ,
+            onAlphaClick = {viewModel.onAlphaClick()},
+            onGridClick = {viewModel.onGridClick()})
+
+
         when (uiState) {
             BreedsListUiState.Loading ->
                 BreedsLoadingWheel(
@@ -65,7 +71,8 @@ internal fun BreedsListScreen(
                         breeds = it,
                         onBreedClick = onBreedClick,
                         modifier = modifier,
-                        fetchMoreData = fetchMoreData
+                        fetchMoreData = {viewModel.fetchBreeds()},
+                        uiState.isGrid,
                     )
                 }
             is BreedsListUiState.Error -> BreedsEmptyScreen()

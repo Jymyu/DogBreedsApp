@@ -7,7 +7,9 @@ sealed interface BreedsListUiState {
 
     data class Breeds(
         val Breeds: List<BreedItemUiModel>?,
+        val isGrid: Boolean,
     ) : BreedsListUiState
+
 
     data class Error(val errorMessage: String) : BreedsListUiState
 }
