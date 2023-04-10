@@ -8,6 +8,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.example.details.DetailsRoute
 import com.example.model.BreedItemUiModel
 import com.example.model.BreedsTempRepository
 import com.google.gson.Gson
@@ -15,8 +16,9 @@ import com.google.gson.Gson
 
 internal const val breedArg = "breedArg"
 
-fun NavController.navigateToBreedDetails( breedId: Int) {
-    this.navigate("details_route/$breedId")
+fun NavController.navigateToBreedDetails(breedItemUiModel: BreedItemUiModel) {
+    val json = Uri.encode(Gson().toJson(breedItemUiModel))
+    this.navigate("details_route/$json")
 }
 
 fun NavGraphBuilder.detailsBreedScreen(
@@ -25,12 +27,16 @@ fun NavGraphBuilder.detailsBreedScreen(
     composable(
         route = "details_route/{$breedArg}",
         arguments = listOf(
-            navArgument(breedArg) { type = NavType.IntType },
+            navArgument(breedArg) { type = NavType.StringType },
         ),
     ) {
-        val breedId = it.arguments?.getInt(breedArg)
-//        TopicRoute(onBackClick = onBackClick, onTopicClick = onTopicClick)
-        breedId?.let { _ ->
-            Text(BreedsTempRepository.data[breedId].name) }
+        val breed = it.arguments?.getString(breedArg)
+        val parsed = Gson().fromJson(breed, BreedItemUiModel::class.java)
+        breed?.let { _ ->
+            DetailsRoute(onBackClick = onBackClick, breed = parsed)
+        }
     }
 }
+
+
+

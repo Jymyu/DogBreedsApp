@@ -16,7 +16,7 @@ fun NavController.navigateToBreedsGraph(navOptions: NavOptions? = null) {
 }
 
 fun NavGraphBuilder.breedsListGraph(
-    onBreedClick: (Int) -> Unit,
+    onBreedClick: (BreedItemUiModel) -> Unit,
     nestedGraphs: NavGraphBuilder.() -> Unit,
 ) {
     navigation(

@@ -1,8 +1,8 @@
 package com.example.dogbreedsapp.navigation
 
-import com.example.design_system.component.DogBreedIcons
-import com.example.design_system.component.Icon
-import com.example.design_system.component.Icon.*
+import com.example.design_system.icons.DogBreedIcons
+import com.example.design_system.icons.Icon
+import com.example.design_system.icons.Icon.*
 import com.example.dogbreedsapp.R
 import com.example.breedslist.R as BreedListR
 enum class TopLevelDestination(

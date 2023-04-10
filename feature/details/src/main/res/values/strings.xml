@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="back_label">Back</string>
+    <string name="origin">Breed Origin: %s </string>
+    <string name="category">Breed Category: %s </string>
+    <string name="temperament">Breed Temperament: %s </string>
+
+</resources>

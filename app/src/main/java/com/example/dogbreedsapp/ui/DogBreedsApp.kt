@@ -3,7 +3,6 @@ package com.example.dogbreedsapp.ui
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -16,16 +15,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.semantics
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import com.example.design_system.component.DogBreedsNavigationBar
 import com.example.design_system.component.DogBreedsNavigationBarItem
 import com.example.design_system.component.DogBreedsTopAppBar
-import com.example.design_system.component.Icon
-import com.example.design_system.component.Icon.ImageVectorIcon
+import com.example.design_system.icons.Icon.ImageVectorIcon
 import com.example.dogbreedsapp.navigation.DogBreedsNavHost
 import com.example.dogbreedsapp.navigation.TopLevelDestination
 
