@@ -6,8 +6,8 @@ sealed interface BreedsListUiState {
     object Loading : BreedsListUiState
 
     data class Breeds(
-        val Breeds: List<BreedItemUiModel>,
+        val Breeds: List<BreedItemUiModel>?,
     ) : BreedsListUiState
 
-    object Empty : BreedsListUiState
+    data class Error(val errorMessage: String) : BreedsListUiState
 }

@@ -74,32 +74,39 @@ internal fun DetailsScreen(
             Column(
                 modifier = Modifier.padding(horizontal = 24.dp),
             ) {
-                DynamicAsyncImage(
-                    imageUrl = breedItemUiModel.imageUrl,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .align(Alignment.CenterHorizontally)
-                        .size(216.dp)
-                        .padding(bottom = 12.dp),
-                )
-                Text(breedItemUiModel.name, style = MaterialTheme.typography.displayMedium)
-                if (breedItemUiModel.category.isNotEmpty()) {
+                breedItemUiModel.imageUrl?.let {
+                    DynamicAsyncImage(
+                        imageUrl = it,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .align(Alignment.CenterHorizontally)
+                            .size(216.dp)
+                            .padding(bottom = 12.dp),
+                    )
+                }
+                breedItemUiModel.name?.let {
                     Text(
-                        stringResource(R.string.category, breedItemUiModel.category),
+                        it,
+                        style = MaterialTheme.typography.displayMedium
+                    )
+                }
+                breedItemUiModel.category?.let {
+                    Text(
+                        stringResource(R.string.category, it),
                         modifier = Modifier.padding(top = 24.dp),
                         style = MaterialTheme.typography.bodyLarge,
                     )
                 }
-                if (breedItemUiModel.origin.isNotEmpty()) {
+                breedItemUiModel.origin?.let {
                     Text(
-                        stringResource(R.string.origin,breedItemUiModel.origin),
+                        stringResource(R.string.origin, it),
                         modifier = Modifier.padding(top = 24.dp),
                         style = MaterialTheme.typography.bodyLarge,
                     )
                 }
-                if (breedItemUiModel.temperament.isNotEmpty()) {
+                breedItemUiModel.temperament?.let {
                     Text(
-                        stringResource(R.string.temperament,breedItemUiModel.temperament),
+                        stringResource(R.string.temperament, it),
                         modifier = Modifier.padding(top = 24.dp),
                         style = MaterialTheme.typography.bodyLarge,
                     )

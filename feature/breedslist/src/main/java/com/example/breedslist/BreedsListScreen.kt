@@ -44,12 +44,14 @@ internal fun BreedsListScreen(
                     contentDesc = stringResource(id = R.string.loading),
                 )
             is BreedsListUiState.Breeds ->
-                BreedsListContent(
-                    breeds = uiState.Breeds,
-                    onBreedClick = onBreedClick,
-                    modifier = modifier,
-                )
-            is BreedsListUiState.Empty -> BreedsEmptyScreen()
+                uiState.Breeds?.let {
+                    BreedsListContent(
+                        breeds = it,
+                        onBreedClick = onBreedClick,
+                        modifier = modifier,
+                    )
+                }
+            is BreedsListUiState.Error -> BreedsEmptyScreen()
         }
     }
 }

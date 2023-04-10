@@ -20,8 +20,8 @@ import com.example.design_system.component.DynamicAsyncImage
 
 @Composable
 fun BreedsItem(
-    name: String,
-    imageUrl: String,
+    name: String?,
+    imageUrl: String?,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     iconModifier: Modifier = Modifier,
@@ -38,9 +38,9 @@ fun BreedsItem(
                 .clickable { onClick() }
                 .padding(vertical = itemSeparation),
         ) {
-            BreedImage(imageUrl, iconModifier.size(256.dp))
+            imageUrl?.let { BreedImage(it, iconModifier.size(256.dp)) }
             Spacer(modifier = Modifier.width(16.dp))
-            Text(name, style = MaterialTheme.typography.titleMedium)
+            name?.let { Text(it, style = MaterialTheme.typography.titleMedium) }
         }
     }
 }
