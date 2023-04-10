@@ -20,16 +20,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.FetchBreedsUseCase
 import com.example.model.BreedItemUiModel
-import com.example.model.BreedsTempRepository
 import com.example.model.network.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -37,24 +33,48 @@ class BreedsListViewModel @Inject constructor(
     private val fetchBreedsUseCase: FetchBreedsUseCase
 ) : ViewModel() {
 
-    val uiState: StateFlow<BreedsListUiState> =
-        fetchBreedsUseCase(0)
-            .map{ resource ->
-                when (resource) {
-                    is Resource.Loading -> BreedsListUiState.Loading
-                    is Resource.Success -> BreedsListUiState.Breeds(resource.data)
-                    is Resource.Error -> BreedsListUiState.Error(resource.message.toString())
-                }
-        }.stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = BreedsListUiState.Loading,
-        )
-}
+    private var page = 1
+    private var loading = false
 
- fun getMockedBreeds(): Flow<List<BreedItemUiModel>> = flow {
-     delay(1000)
-    emit(
-        BreedsTempRepository.data
-    )
+    private val _uiState = MutableStateFlow<BreedsListUiState>(BreedsListUiState.Loading)
+    val uiState: StateFlow<BreedsListUiState> = _uiState.asStateFlow()
+
+    private var breeds = mutableListOf<BreedItemUiModel>()
+
+    init {
+        fetchBreeds()
+    }
+
+    fun fetchBreeds() {
+        if (!loading)
+            viewModelScope.launch {
+
+                fetchBreedsUseCase(page).collect { resource ->
+                    when (resource) {
+                        is Resource.Success -> resource.data?.let {
+                            handleFetchBreedsSuccess(it)
+                            loading = false
+                        }
+                        is Resource.Error -> {
+                            BreedsListUiState.Error(resource.message.toString())
+                            loading = false
+                        }
+                        is Resource.Loading ->{
+                            _uiState.value = BreedsListUiState.Loading
+                            loading = true
+                        }
+                    }
+                }
+
+
+            }
+    }
+
+    private fun handleFetchBreedsSuccess(it: List<BreedItemUiModel>) {
+        breeds = (breeds + it).toMutableList()
+        _uiState.value = BreedsListUiState.Breeds(breeds)
+        page++
+    }
+
+
 }

@@ -54,14 +54,6 @@ fun DogBreedsApp(
             Column(Modifier.fillMaxSize()) {
                 // Show the top app bar on top level destinations.
                 val destination = appState.currentTopLevelDestination
-                if (destination != null) {
-                    DogBreedsTopAppBar(
-                        titleRes = destination.titleTextId,
-                        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                            containerColor = Color.Transparent,
-                        ),
-                    )
-                }
 
                 DogBreedsNavHost(appState.navController)
             }

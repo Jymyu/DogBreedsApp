@@ -11,6 +11,6 @@ class BreedsDataSourceImpl @Inject constructor(
 ) : BreedsDataSource {
 
     override suspend fun getBreeds(page: Int): Resource<List<BreedNetworkModel>> = requestData {
-        networkApi.fetchDogBreedsByPage(page)
+        networkApi.fetchDogBreedsByPage(20,page)
     }
 }

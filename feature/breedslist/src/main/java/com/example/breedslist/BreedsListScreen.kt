@@ -1,15 +1,20 @@
 package com.example.breedslist
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.design_system.component.BreedsLoadingWheel
+import com.example.design_system.component.DogBreedsTopAppBar
+import com.example.design_system.icons.DogBreedIcons
 import com.example.model.BreedItemUiModel
 
 @Composable
@@ -24,19 +29,30 @@ internal fun BreedsListRoute(
         uiState = uiState,
         onBreedClick = onBreedClick,
         modifier = modifier,
+        fetchMoreData = { viewModel.fetchBreeds() },
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun BreedsListScreen(
     uiState: BreedsListUiState,
     onBreedClick: (BreedItemUiModel) -> Unit,
     modifier: Modifier = Modifier,
-) {
+    fetchMoreData: () -> Unit,
+
+    ) {
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
+        DogBreedsTopAppBar(
+            titleRes = R.string.nav_button_label_breeds_list,
+            colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                containerColor = Color.Transparent,
+            ),
+            actionAlphaIcon = DogBreedIcons.Person,
+            actionGridIcon = DogBreedIcons.Person)
         when (uiState) {
             BreedsListUiState.Loading ->
                 BreedsLoadingWheel(
@@ -49,6 +65,7 @@ internal fun BreedsListScreen(
                         breeds = it,
                         onBreedClick = onBreedClick,
                         modifier = modifier,
+                        fetchMoreData = fetchMoreData
                     )
                 }
             is BreedsListUiState.Error -> BreedsEmptyScreen()

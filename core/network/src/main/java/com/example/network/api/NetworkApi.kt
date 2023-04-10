@@ -9,7 +9,8 @@ interface NetworkApi {
 
     @GET(BREEDS_ENDPOINT_URL)
     suspend fun fetchDogBreedsByPage(
-       @Query("page") pageNumber: Int
+        @Query("limit") pageLimit: Int,
+        @Query("page") pageNumber: Int
     ): List<BreedNetworkModel>
 
 }

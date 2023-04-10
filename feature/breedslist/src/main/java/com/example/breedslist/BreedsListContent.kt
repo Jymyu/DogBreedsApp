@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsBottomHeight
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
@@ -18,21 +19,21 @@ fun BreedsListContent(
     breeds: List<BreedItemUiModel>,
     onBreedClick: (BreedItemUiModel) -> Unit,
     modifier: Modifier = Modifier,
+    fetchMoreData: () -> Unit
 ) {
     LazyColumn(
         modifier = modifier
             .padding(horizontal = 16.dp),
         contentPadding = PaddingValues(top = 8.dp),
     ) {
-        breeds.forEach { breed ->
-            val breedId = breed.id
-            item(key = breedId) {
-                BreedsItem(
-                    name = breed.name,
-                    imageUrl = breed.imageUrl,
-                    onClick = { onBreedClick(breed) },
-                )
-            }
+        itemsIndexed(items = breeds){index: Int, item: BreedItemUiModel ->
+            if (index+1 > breeds.size-4)
+                fetchMoreData()
+            BreedsItem(
+                name = item.name,
+                imageUrl = item.imageUrl,
+                onClick = { onBreedClick(item) },
+            )
         }
 
         item {
