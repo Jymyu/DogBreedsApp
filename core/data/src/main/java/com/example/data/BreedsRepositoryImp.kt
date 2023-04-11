@@ -20,7 +20,7 @@ class BreedsRepositoryImp @Inject constructor(private val breedsDataSource: Bree
                     emit(Resource.Success(charactersList))
                 }
         } else
-            emit(Resource.Error("There's no data"))
+            emit(Resource.Error(remoteResponse.message))
     }
 
     override fun searchBreeds(query: String): Flow<Resource<List<BreedItemUiModel>>> = flow {
@@ -32,7 +32,7 @@ class BreedsRepositoryImp @Inject constructor(private val breedsDataSource: Bree
                     emit(Resource.Success(charactersList))
                 }
         } else
-            emit(Resource.Error("There's no data"))
+            emit(Resource.Error(remoteResponse.message))
     }
 
 }

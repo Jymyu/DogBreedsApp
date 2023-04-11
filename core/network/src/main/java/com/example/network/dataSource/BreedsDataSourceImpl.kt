@@ -9,12 +9,15 @@ import javax.inject.Inject
 class BreedsDataSourceImpl @Inject constructor(
     private val networkApi: NetworkApi
 ) : BreedsDataSource {
-
     override suspend fun getBreeds(page: Int): Resource<List<BreedNetworkModel>> = requestData {
-        networkApi.fetchDogBreedsByPage(20,page)
+        networkApi.fetchDogBreedsByPage(pageLimit,page)
     }
 
     override suspend fun searchBreeds(query: String): Resource<List<BreedNetworkModel>> = requestData {
        networkApi.searchBreeds(query)
+    }
+
+    companion object {
+        const val pageLimit = 20
     }
 }
