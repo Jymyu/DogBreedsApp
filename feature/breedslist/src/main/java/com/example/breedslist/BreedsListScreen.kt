@@ -64,7 +64,7 @@ internal fun BreedsListScreen(
                     modifier = modifier,
                     contentDesc = stringResource(id = R.string.loading),
                 )
-            is BreedsListUiState.Breeds ->
+            is BreedsListUiState.Breeds -> {
                 uiState.Breeds?.let {
                     BreedsListContent(
                         breeds = it,
@@ -74,6 +74,13 @@ internal fun BreedsListScreen(
                         uiState.isGrid,
                     )
                 }
+                if (uiState.isLoadingMore)
+                    BreedsLoadingWheel(
+                        modifier = modifier,
+                        contentDesc = "Loading more data",
+                    )
+            }
+
             is BreedsListUiState.Error -> BreedsEmptyScreen()
         }
     }

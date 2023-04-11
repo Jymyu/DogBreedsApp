@@ -62,7 +62,7 @@ class BreedsListViewModel @Inject constructor(
                             loading = false
                         }
                         is Resource.Loading -> {
-                            _uiState.value = BreedsListUiState.Loading
+                            _uiState.value = BreedsListUiState.Breeds(breeds, isToShowOnGrid, true)
                             loading = true
                         }
                     }
@@ -74,7 +74,7 @@ class BreedsListViewModel @Inject constructor(
 
     private fun handleFetchBreedsSuccess(it: List<BreedItemUiModel>) {
         breeds.addAll(it)
-        _uiState.value = BreedsListUiState.Breeds(breeds, isToShowOnGrid)
+        _uiState.value = BreedsListUiState.Breeds(breeds, isToShowOnGrid, false)
         page++
     }
 
@@ -82,10 +82,10 @@ class BreedsListViewModel @Inject constructor(
         val sorted = breeds.sortedBy { it.name }
         if (!isSortedAlphabetically) {
 
-            _uiState.value = BreedsListUiState.Breeds(sorted, isToShowOnGrid)
+            _uiState.value = BreedsListUiState.Breeds(sorted, isToShowOnGrid, false)
             isSortedAlphabetically = true
         } else {
-            _uiState.value = BreedsListUiState.Breeds(sorted.reversed(), isToShowOnGrid)
+            _uiState.value = BreedsListUiState.Breeds(sorted.reversed(), isToShowOnGrid, false)
             isSortedAlphabetically = false
         }
 
@@ -93,7 +93,7 @@ class BreedsListViewModel @Inject constructor(
 
     fun onGridClick() {
         isToShowOnGrid = !isToShowOnGrid
-        _uiState.value = BreedsListUiState.Breeds(breeds, isToShowOnGrid)
+        _uiState.value = BreedsListUiState.Breeds(breeds, isToShowOnGrid, false)
 
     }
 
