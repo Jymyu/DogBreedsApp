@@ -1,8 +1,6 @@
 package com.example.details.navigation
 
 import android.net.Uri
-import android.os.Bundle
-import androidx.compose.material3.Text
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
@@ -10,7 +8,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.details.DetailsRoute
 import com.example.model.BreedItemUiModel
-import com.example.model.BreedsTempRepository
 import com.google.gson.Gson
 
 

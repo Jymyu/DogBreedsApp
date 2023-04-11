@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
-
 import org.junit.Assert.*
 import org.junit.Before
 
@@ -34,7 +33,7 @@ class BreedsRepositoryTest {
     fun `when repository getBreeds returns error`() = runBlocking {
         coEvery { breedsDataSource.getBreeds(mockk()) } returns Resource.Error("Error")
 
-        dogBreedRepository.getBreeds(1).collect{}
+        dogBreedRepository.getBreeds(1).collect {}
 
         coVerify { breedsDataSource.getBreeds(1) }
     }
@@ -45,9 +44,8 @@ class BreedsRepositoryTest {
         val response = Resource.Success(list)
         coEvery { breedsDataSource.getBreeds(1) } returns response
 
-        assertEquals(response.data,dogBreedRepository.getBreeds(1).drop(1).first().data)
+        assertEquals(response.data, dogBreedRepository.getBreeds(1).drop(1).first().data)
         coVerify { breedsDataSource.getBreeds(1) }
-
 
 
     }
@@ -58,7 +56,7 @@ class BreedsRepositoryTest {
         val response = Resource.Success(list)
         coEvery { breedsDataSource.searchBreeds("search") } returns response
 
-        assertEquals(response.data,dogBreedRepository.searchBreeds("search").drop(1).first().data)
+        assertEquals(response.data, dogBreedRepository.searchBreeds("search").drop(1).first().data)
         coVerify { breedsDataSource.searchBreeds("search") }
 
     }
@@ -67,7 +65,7 @@ class BreedsRepositoryTest {
     fun `when repository searchBreeds returns error`() = runBlocking {
         coEvery { breedsDataSource.searchBreeds("search") } returns Resource.Error("Error")
 
-        dogBreedRepository.searchBreeds("search").collect{}
+        dogBreedRepository.searchBreeds("search").collect {}
 
         coVerify { breedsDataSource.searchBreeds("search") }
     }

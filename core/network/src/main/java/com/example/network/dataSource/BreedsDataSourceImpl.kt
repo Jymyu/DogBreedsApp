@@ -10,12 +10,13 @@ class BreedsDataSourceImpl @Inject constructor(
     private val networkApi: NetworkApi
 ) : BreedsDataSource {
     override suspend fun getBreeds(page: Int): Resource<List<BreedNetworkModel>> = requestData {
-        networkApi.fetchDogBreedsByPage(pageLimit,page)
+        networkApi.fetchDogBreedsByPage(pageLimit, page)
     }
 
-    override suspend fun searchBreeds(query: String): Resource<List<BreedNetworkModel>> = requestData {
-       networkApi.searchBreeds(query)
-    }
+    override suspend fun searchBreeds(query: String): Resource<List<BreedNetworkModel>> =
+        requestData {
+            networkApi.searchBreeds(query)
+        }
 
     companion object {
         const val pageLimit = 20

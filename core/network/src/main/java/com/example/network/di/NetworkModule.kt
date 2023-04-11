@@ -1,4 +1,5 @@
 package com.example.network.di
+
 import com.example.network.api.NetworkApi
 import com.example.network.api.NetworkConstants.API_KEY
 import com.example.network.api.NetworkConstants.BASE_URL

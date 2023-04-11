@@ -33,31 +33,32 @@ class BreedsSearchViewModel @Inject constructor(
     private val fetchBreedsUseCase: SearchBreedUseCase
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow<BreedsSearchUiState>(BreedsSearchUiState.BreedsSearch(
-        mutableListOf()))
+    private val _uiState = MutableStateFlow<BreedsSearchUiState>(
+        BreedsSearchUiState.BreedsSearch(
+            mutableListOf()
+        )
+    )
     val uiState: StateFlow<BreedsSearchUiState> = _uiState.asStateFlow()
 
     private var breeds = mutableListOf<BreedItemUiModel>()
 
     fun searchKeyword(searchQuery: String) {
-            viewModelScope.launch {
+        viewModelScope.launch {
 
-                fetchBreedsUseCase(searchQuery).collect { resource ->
-                    when (resource) {
-                        is Resource.Success -> resource.data?.let {
-                            handleSearchSuccess(it)
-                        }
-                        is Resource.Error -> {
-                            BreedsSearchUiState.Error(resource.message.toString())
-                        }
-                        is Resource.Loading ->{
-                            _uiState.value = BreedsSearchUiState.Loading
-                        }
+            fetchBreedsUseCase(searchQuery).collect { resource ->
+                when (resource) {
+                    is Resource.Success -> resource.data?.let {
+                        handleSearchSuccess(it)
+                    }
+                    is Resource.Error -> {
+                        BreedsSearchUiState.Error(resource.message.toString())
+                    }
+                    is Resource.Loading -> {
+                        _uiState.value = BreedsSearchUiState.Loading
                     }
                 }
-
-
             }
+        }
     }
 
     private fun handleSearchSuccess(it: List<BreedItemUiModel>) {

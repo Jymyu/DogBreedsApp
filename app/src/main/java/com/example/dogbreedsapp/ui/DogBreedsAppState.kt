@@ -56,8 +56,12 @@ class NiaAppState(
         }
 
         when (topLevelDestination) {
-            TopLevelDestination.BREEDS_LIST -> navController.navigateToBreedsGraph(topLevelNavOptions)
-            TopLevelDestination.BREEDS_SEARCH -> navController.navigateToBreedsSearchGraph(topLevelNavOptions)
+            TopLevelDestination.BREEDS_LIST -> navController.navigateToBreedsGraph(
+                topLevelNavOptions
+            )
+            TopLevelDestination.BREEDS_SEARCH -> navController.navigateToBreedsSearchGraph(
+                topLevelNavOptions
+            )
         }
 
     }

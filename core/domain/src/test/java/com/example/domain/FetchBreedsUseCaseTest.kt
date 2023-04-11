@@ -2,14 +2,10 @@ package com.example.domain
 
 import com.example.data.BreedsRepository
 import io.mockk.clearAllMocks
-import io.mockk.coVerify
 import io.mockk.mockk
 import io.mockk.verify
-import org.hamcrest.core.IsInstanceOf.any
 import org.junit.After
 import org.junit.Test
-
-import org.junit.Assert.*
 import org.junit.Before
 
 /**

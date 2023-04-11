@@ -20,10 +20,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.design_system.component.BreedsLoadingWheel
 import com.example.design_system.component.DogBreedsSearchTopAppBar
-import com.example.design_system.component.DogBreedsTopAppBar
 import com.example.design_system.icons.DogBreedIcons
 import com.example.model.BreedItemUiModel
 
@@ -86,7 +84,7 @@ internal fun BreedsSearchScreen(
 
         when (uiState) {
 
-            is BreedsSearchUiState.BreedsSearch ->  uiState.Breeds?.let {
+            is BreedsSearchUiState.BreedsSearch -> uiState.Breeds?.let {
                 BreedsSearchContent(
                     breeds = it,
                     onBreedClick = onBreedClick,
@@ -94,7 +92,7 @@ internal fun BreedsSearchScreen(
                 )
             }
             is BreedsSearchUiState.Error -> BreedsSearchEmptyScreen()
-            BreedsSearchUiState.Loading ->  BreedsLoadingWheel(
+            BreedsSearchUiState.Loading -> BreedsLoadingWheel(
                 modifier = modifier,
                 contentDesc = stringResource(id = R.string.loading),
             )

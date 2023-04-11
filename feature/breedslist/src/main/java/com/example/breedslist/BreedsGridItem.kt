@@ -47,13 +47,13 @@ fun BreedsGridItem(
 
 @Composable
 private fun BreedImage(imageUrl: String, modifier: Modifier = Modifier) {
-    if (imageUrl.isEmpty()){
+    if (imageUrl.isEmpty()) {
         Icon(
             modifier = modifier
                 .background(MaterialTheme.colorScheme.surface)
                 .padding(4.dp),
             imageVector = DogBreedIcons.Person,
-            contentDescription = null, // decorative image
+            contentDescription = null,
         )
 
     } else {

@@ -7,7 +7,6 @@ import androidx.navigation.compose.NavHost
 import com.example.breedsearch.navigation.breedsSearchGraph
 import com.example.breedslist.navigation.breedsListGraph
 import com.example.breedslist.navigation.breedsListGraphRoutePattern
-import com.example.breedslist.navigation.navigateToBreedsGraph
 import com.example.details.navigation.detailsBreedScreen
 import com.example.details.navigation.navigateToBreedDetails
 
@@ -25,7 +24,7 @@ fun DogBreedsNavHost(
 
         breedsListGraph(
             onBreedClick = {
-                           navController.navigateToBreedDetails(it)
+                navController.navigateToBreedDetails(it)
             },
             nestedGraphs = {
                 detailsBreedScreen(

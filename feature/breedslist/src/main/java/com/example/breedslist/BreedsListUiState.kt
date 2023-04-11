@@ -10,6 +10,5 @@ sealed interface BreedsListUiState {
         val isGrid: Boolean,
     ) : BreedsListUiState
 
-
     data class Error(val errorMessage: String) : BreedsListUiState
 }

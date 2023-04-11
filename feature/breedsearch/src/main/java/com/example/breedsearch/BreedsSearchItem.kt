@@ -21,16 +21,18 @@ fun BreedsSearchItem(
     modifier: Modifier = Modifier,
 ) {
     Card(
-        modifier = modifier.padding(top = 16. dp)
+        modifier = modifier
+            .padding(top = 16.dp)
             .clickable { onClick() }
             .fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4. dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
     ) {
         Column(
-            modifier = Modifier.padding(horizontal = 24.dp)
+            modifier = Modifier
+                .padding(horizontal = 24.dp)
                 .padding(vertical = 8.dp),
 
-        ) {
+            ) {
             breedItemUiModel?.name?.let {
                 Text(
                     it,

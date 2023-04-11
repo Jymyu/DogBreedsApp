@@ -59,5 +59,5 @@ private fun NiaTopAppBarPreview() {
         titleRes = android.R.string.untitled,
         actionAlphaIcon = DogBreedIcons.OrderBy,
         actionGridIcon = DogBreedIcons.Grid,
-        )
+    )
 }

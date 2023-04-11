@@ -10,7 +10,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -20,7 +19,6 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import com.example.design_system.component.DogBreedsNavigationBar
 import com.example.design_system.component.DogBreedsNavigationBarItem
-import com.example.design_system.component.DogBreedsTopAppBar
 import com.example.design_system.icons.Icon.ImageVectorIcon
 import com.example.dogbreedsapp.navigation.DogBreedsNavHost
 import com.example.dogbreedsapp.navigation.TopLevelDestination

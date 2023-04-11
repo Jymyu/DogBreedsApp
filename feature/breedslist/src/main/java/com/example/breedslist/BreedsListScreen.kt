@@ -12,7 +12,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.design_system.component.BreedsLoadingWheel
 import com.example.design_system.component.DogBreedsTopAppBar
 import com.example.design_system.icons.DogBreedIcons
@@ -55,8 +54,8 @@ internal fun BreedsListScreen(
             ),
             actionAlphaIcon = DogBreedIcons.OrderBy,
             actionGridIcon = DogBreedIcons.Grid,
-            onAlphaClick = {viewModel.onAlphaClick()},
-            onGridClick = {viewModel.onGridClick()})
+            onAlphaClick = { viewModel.onAlphaClick() },
+            onGridClick = { viewModel.onGridClick() })
 
 
         when (uiState) {
@@ -71,7 +70,7 @@ internal fun BreedsListScreen(
                         breeds = it,
                         onBreedClick = onBreedClick,
                         modifier = modifier,
-                        fetchMoreData = {viewModel.fetchBreeds()},
+                        fetchMoreData = { viewModel.fetchBreeds() },
                         uiState.isGrid,
                     )
                 }
