@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_bar_title">Search For Keyword</string>
+    <string name="empty_screen">No Data to Show</string>
+    <string name="loading">Loading</string>
+    <string name="search_text_field_label">Search For Breads</string>
+    <string name="origin">Breed Origin: %s </string>
+    <string name="breed_group">Breed Group: %s </string>
+
+</resources>

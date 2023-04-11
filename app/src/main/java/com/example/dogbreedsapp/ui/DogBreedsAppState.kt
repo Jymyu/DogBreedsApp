@@ -8,6 +8,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
+import com.example.breedsearch.navigation.breedsSearchRoute
+import com.example.breedsearch.navigation.navigateToBreedsSearchGraph
 import com.example.breedslist.navigation.breedsListRoute
 import com.example.breedslist.navigation.navigateToBreedsGraph
 import com.example.dogbreedsapp.navigation.TopLevelDestination
@@ -32,8 +34,7 @@ class NiaAppState(
     val currentTopLevelDestination: TopLevelDestination?
         @Composable get() = when (currentDestination?.route) {
             breedsListRoute -> TopLevelDestination.BREEDS_LIST
-//            bookmarksRoute -> BOOKMARKS
-//            interestsRoute -> INTERESTS
+            breedsSearchRoute -> TopLevelDestination.BREEDS_SEARCH
             else -> null
         }
 
@@ -56,8 +57,7 @@ class NiaAppState(
 
         when (topLevelDestination) {
             TopLevelDestination.BREEDS_LIST -> navController.navigateToBreedsGraph(topLevelNavOptions)
-//            BOOKMARKS -> navController.navigateToBookmarks(topLevelNavOptions)
-//            INTERESTS -> navController.navigateToInterestsGraph(topLevelNavOptions)
+            TopLevelDestination.BREEDS_SEARCH -> navController.navigateToBreedsSearchGraph(topLevelNavOptions)
         }
 
     }

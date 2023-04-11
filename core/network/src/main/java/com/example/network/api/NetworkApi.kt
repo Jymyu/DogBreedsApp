@@ -13,4 +13,9 @@ interface NetworkApi {
         @Query("page") pageNumber: Int
     ): List<BreedNetworkModel>
 
+    @GET("breeds/search")
+    suspend fun searchBreeds(
+        @Query("q") query: String
+    ): List<BreedNetworkModel>
+
 }

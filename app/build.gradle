@@ -52,6 +52,7 @@ dependencies {
 
     implementation(project(":design-system"))
     implementation(project(":feature:breedslist"))
+    implementation(project(":feature:breedsearch"))
     implementation(project(":feature:details"))
     implementation(project(":model"))
 

@@ -5,6 +5,7 @@ import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Grid3x3
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Sort
 import androidx.compose.material.icons.filled.ViewDay
 import androidx.compose.material.icons.outlined.Email
@@ -20,6 +21,7 @@ object DogBreedIcons {
     val OrderBy = Icons.Filled.Sort
     val Grid = Icons.Filled.Grid3x3
     val Dog = Icons.Filled.ViewDay
+    val Search = Icons.Filled.Search
 
 }
 

@@ -5,5 +5,7 @@ import com.example.model.network.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface BreedsRepository {
-    fun getDogBreeds(page: Int): Flow<Resource<List<BreedItemUiModel>>>
+    fun getBreeds(page: Int): Flow<Resource<List<BreedItemUiModel>>>
+    fun searchBreeds(query: String): Flow<Resource<List<BreedItemUiModel>>>
+
 }
