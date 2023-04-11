@@ -12,8 +12,8 @@ enum class TopLevelDestination(
     val titleTextId: Int,
 ) {
     BREEDS_LIST(
-        selectedIcon = ImageVectorIcon(DogBreedIcons.BreedListNav),
-        unselectedIcon = ImageVectorIcon(DogBreedIcons.BreedListNavUnselected),
+        selectedIcon = ImageVectorIcon(DogBreedIcons.Dog),
+        unselectedIcon = ImageVectorIcon(DogBreedIcons.Dog),
         iconTextId = BreedListR.string.nav_button_label_breeds_list,
         titleTextId = R.string.app_name,
     ),

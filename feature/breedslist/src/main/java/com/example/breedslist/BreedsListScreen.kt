@@ -53,8 +53,8 @@ internal fun BreedsListScreen(
             colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                 containerColor = Color.Transparent,
             ),
-            actionAlphaIcon = DogBreedIcons.Person,
-            actionGridIcon = DogBreedIcons.Person ,
+            actionAlphaIcon = DogBreedIcons.OrderBy,
+            actionGridIcon = DogBreedIcons.Grid,
             onAlphaClick = {viewModel.onAlphaClick()},
             onGridClick = {viewModel.onGridClick()})
 

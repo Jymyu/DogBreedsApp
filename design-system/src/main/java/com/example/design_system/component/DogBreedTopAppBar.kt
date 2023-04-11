@@ -57,7 +57,7 @@ fun DogBreedsTopAppBar(
 private fun NiaTopAppBarPreview() {
     DogBreedsTopAppBar(
         titleRes = android.R.string.untitled,
-        actionAlphaIcon = DogBreedIcons.Person,
-        actionGridIcon = DogBreedIcons.Person,
+        actionAlphaIcon = DogBreedIcons.OrderBy,
+        actionGridIcon = DogBreedIcons.Grid,
         )
 }
